@@ -1,4 +1,9 @@
 import '@/styles/globals.css';
+
+import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+import '@fortawesome/fontawesome-free/css/solid.min.css';
+import '@fortawesome/fontawesome-free/css/brands.min.css';
+import '@fortawesome/fontawesome-free/css/regular.min.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -18,12 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang='en'>
-      <Providers>
-        <body className={`${inter.className}`}>
-          <Layout>{children}</Layout>
-        </body>
-      </Providers>
+    <html lang='en'>
+      <body suppressHydrationWarning={true} className={`${inter.className}`}>
+        <Providers>
+          <Layout>
+            <main>{children}</main>
+          </Layout>
+        </Providers>
+      </body>
     </html>
   );
 }

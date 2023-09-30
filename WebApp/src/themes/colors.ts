@@ -1,6 +1,6 @@
 const colors = {
   // mainBg: '#F5F5F5',
-  mainBg: '#F5F59A',
+  mainBg: '#C5C5C5',
   white: '#FFFFFF',
   textSecondary: '#086E56',
   primary: '#0CAE89',

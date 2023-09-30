@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS='development --max_old_space_size=4096' next dev -p 3000",
+    "dev": "cross-env NODE_OPTIONS='development --max_old_space_size=4096' next dev -p 3003",
     "build": "cross-env NODE_OPTIONS='production --max_old_space_size=4096' next build",
+    "build-css": "npx tailwindcss-cli -i ./src/input.css -o ./dist/output.css --watch",
     "start": "cross-env NODE_OPTIONS='--max_old_space_size=4096' npx serve@latest out",
     "lint": "eslint ./ --ext js,jsx,ts,tsx"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.0",
+    "@fortawesome/fontawesome-free": "^6.4.2",
     "antd": "^5.9.4",
     "next": "^13.5.3",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
