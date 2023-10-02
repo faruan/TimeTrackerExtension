@@ -1,6 +1,13 @@
+// import { use } from 'react';
+
 import Image from 'next/image';
 
+// import { todoService } from '@/services/baseService';
+
 export default function Home() {
+  // const result = use(todoService.GET());
+  // if (result) console.log(result);
+
   return (
     <main className='flex flex-col items-center justify-between p-24'>
       <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex'>
