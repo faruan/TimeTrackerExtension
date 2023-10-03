@@ -3,6 +3,7 @@
 # dependencies
 
 WebApp/node_modules
+Common/node_modules
 .pnp
 .pnp.js
 
@@ -15,6 +16,7 @@ WebApp/out/
 
 # production
 WebApp/build
+Common/build
 
 # misc
 .DS_Store
