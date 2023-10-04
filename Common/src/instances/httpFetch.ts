@@ -1,12 +1,12 @@
 import { Http } from '../@types/http';
 import { getStorageItem } from '../utils/localStorage';
-import * as I from './IhttpAxios'
+import * as I from './IhttpAxios';
 
 const contentType = 'application/json';
 const TOKEN_KEY = 'TOKEN_KEY';
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 const headers = {
-  'Content-Type': contentType
+  'Content-Type': contentType,
 };
 
 interface CustomError extends Error {
@@ -15,27 +15,32 @@ interface CustomError extends Error {
 
 function addAuthorizationHeader(options: RequestInit) {
   const token = getStorageItem(TOKEN_KEY);
+
   if (token) {
     options.headers = {
       ...options.headers,
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     };
   }
 }
 
-function errorDeal(error: CustomError) {
+function errorDeal(error: CustomError | any) {
   if (!error.response) return;
 
   if (error?.response?.Erros && error?.response?.Erros[0].Mensagem) {
-      // Implementar componente de notificação
-      // error.message = error.response?.data.Erros[0].Mensagem;
+    // Implementar componente de notificação
+    // error.message = error.response?.data.Erros[0].Mensagem;
   } else {
-      // "Houve um error inesperado, tente novamente mais tarde."
+    // "Houve um error inesperado, tente novamente mais tarde."
   }
 }
 
 const httpFetch: Http = {
-  get: async <T>(url: string, params?: Record<string, any>, config?: RequestInit) => {
+  get: async <T>(
+    url: string,
+    params?: Record<string, any>,
+    config?: RequestInit,
+  ) => {
     const queryString = new URLSearchParams(params).toString();
     const options: RequestInit = {
       ...config,
@@ -53,12 +58,16 @@ const httpFetch: Http = {
       throw error;
     }
   },
-  post: async <T>(url: string, data?: Record<string, any>, config?: RequestInit) => {
+  post: async <T>(
+    url: string,
+    data?: Record<string, any>,
+    config?: RequestInit,
+  ) => {
     const options: RequestInit = {
       ...config,
       method: 'POST',
       headers,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     };
     addAuthorizationHeader(options);
 
@@ -71,12 +80,16 @@ const httpFetch: Http = {
       throw error;
     }
   },
-  put: async <T>(url: string, data?: Record<string, any>, config?: RequestInit) => {
+  put: async <T>(
+    url: string,
+    data?: Record<string, any>,
+    config?: RequestInit,
+  ) => {
     const options: RequestInit = {
       ...config,
       method: 'PUT',
       headers,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     };
     addAuthorizationHeader(options);
 
@@ -94,7 +107,7 @@ const httpFetch: Http = {
     const options: RequestInit = {
       ...config,
       method: 'DELETE',
-      headers
+      headers,
     };
     addAuthorizationHeader(options);
 
@@ -106,7 +119,7 @@ const httpFetch: Http = {
       errorDeal(error);
       throw error;
     }
-  }
+  },
 };
 
 export default httpFetch;

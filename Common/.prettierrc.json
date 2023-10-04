@@ -6,8 +6,5 @@
   "jsxSingleQuote": true,
   "arrowParens": "always",
   "printWidth": 80,
-  "endOfLine": "auto",
-  "plugins": [
-    "prettier-plugin-tailwindcss"
-  ]
+  "endOfLine": "auto"
 }
